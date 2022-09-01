@@ -1,0 +1,16 @@
+[
+{
+  "modid": "tmr",
+  "name": "token manager",
+  "description": "Cheaters get banned.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://discord.gg/7B5RbsArYK",
+  "updateUrl": "",
+  "authorList": ["Jerome"],
+  "credits": "",
+  "logoFile": "assets/shadyaddons/chester.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]
