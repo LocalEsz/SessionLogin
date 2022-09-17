@@ -1,6 +1,6 @@
 package github.quantizr.autogg.login.events;
 
-import github.quantizr.autogg.login.Authenticator;
+import github.quantizr.autogg.Authenticator;
 import github.quantizr.autogg.login.gui.TokenManager;
 import github.quantizr.autogg.login.handlers.ConfigHandler;
 import net.minecraft.client.Minecraft;
