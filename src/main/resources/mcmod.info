@@ -1,15 +1,15 @@
 [
 {
-  "modid": "tmr",
-  "name": "token manager",
-  "description": "Cheaters get banned.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "https://discord.gg/bbK6ndHqN6",
+  "modid": "examplemods",
+  "name": "SessionLogins",
+  "description": "a session login mod",
+  "version": "2.0",
+  "mcversion": "1.8.9",
+  "url": "",
   "updateUrl": "",
-  "authorList": ["Jerome"],
+  "authorList": ["iloverat"],
   "credits": "",
-  "logoFile": "assets/shadyaddons/chester.png",
+  "logoFile": "",
   "screenshots": [],
   "dependencies": []
 }
