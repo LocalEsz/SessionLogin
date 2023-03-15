@@ -1,8 +1,6 @@
 # SessionLogin
-### Epic session login mod for ratters
-### YOU NEED ESSENTIALS TO USE MOD NORMALLY
-### when you launch the game you will be logged into a non premium account
-### you either need to press the session login button in the top left
-### or if you have essentials you can select your account to join servers
-### download in releases
-#### open source you can check the code and compile it yourself
+## for educational purposes - or if you want to account share idk
+### allows you to login to accounts via session id (no need for uuid or username)
+### then once you are on their account allows you to change username and skin of them.
+### changing passwords coming next update!!!! (joke)
+### maybe a feature to refresh sessions with refresh tokens idk i dont use oauth
