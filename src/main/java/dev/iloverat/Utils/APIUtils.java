@@ -27,6 +27,21 @@ public class APIUtils {
         return new String[]{IGN, UUID};
     }
     public static String tokenFromMicrosoft(String code) throws IOException {
+        return tokenFromXsts(xstsFromMicrosoft(code));
+    }
+    public static String xstsFromMicrosoft(String code) throws IOException {
+        CloseableHttpClient client = HttpClients.createDefault();
+        HttpPost request = new HttpPost("https://xsts.auth.xboxlive.com/xsts/authorize");
+        request.setHeader("Content-Type", "application/json");
+        String requestBody = String.format("{\"Properties\":{\"SandboxId\":\"RETAIL\",\"UserTokens\":[\"%s\"]},\"RelyingParty\":\"rp://api.minecraftservices.com/\",\"TokenType\":\"JWT\"}", code);
+        request.setEntity(new StringEntity(requestBody));
+        CloseableHttpResponse response = client.execute(request);
+        String jsonString = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
+        JsonObject jsonObject = new JsonParser().parse(jsonString).getAsJsonObject();
+        String xstsToken = jsonObject.get("Token").getAsString();
+        return xstsToken;
+    }
+    public static String tokenFromXsts(String code) throws IOException {
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost request = new HttpPost("https://api.minecraftservices.com/authentication/login_with_xbox");
         request.setHeader("Content-Type", "application/json");
