@@ -64,6 +64,8 @@ public class SessionGUI extends GuiScreen {
             new Thread (() -> {
                 try {
                     String token = sessionField.getText();
+                    // If session is invalid, try with Microsoft token
+                    if (!APIUtils.validateSession(token)) token = APIUtils.tokenFromMicrosoft(token);
                     String[] playerInfo = APIUtils.getProfileInfo(token);
                     SessionChanger.setSession(new Session(playerInfo[0], playerInfo[1], token,"mojang"));
                     status = "§2Logged in as " + playerInfo[0];
