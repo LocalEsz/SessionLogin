@@ -26,18 +26,17 @@ public class APIUtils {
         String UUID = jsonObject.get("id").getAsString();
         return new String[]{IGN, UUID};
     }
-    public static String[] tokenFromMicrosoft(String code) throws IOException {
+    public static String tokenFromMicrosoft(String code) throws IOException {
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost request = new HttpPost("https://api.minecraftservices.com/authentication/login_with_xbox");
         request.setHeader("Content-Type", "application/json");
-        String jsonString = String.format("{ \"identityToken\": \"XBL3.0 x=%s;\"}", code);
-        request.setEntity(new StringEntity(jsonString));
+        String requestBody = String.format("{ \"identityToken\": \"XBL3.0 x=%s;\"}", code);
+        request.setEntity(new StringEntity(requestBody));
         CloseableHttpResponse response = client.execute(request);
-        jsonString = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
-        jsonObject = new JsonParser().parse(jsonString).getAsJsonObject();
-        String accessToken = jsonObject.get("access_token").getAsString();
-        String clientToken = jsonObject.get("client_token").getAsString();
-        return new String[]{accessToken, clientToken};
+        String jsonString = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
+        JsonObject jsonObject = new JsonParser().parse(jsonString).getAsJsonObject();
+        String mcToken = jsonObject.get("access_token").getAsString();
+        return mcToken;
     }
     public static Boolean validateSession(String token) throws IOException {
         try {
