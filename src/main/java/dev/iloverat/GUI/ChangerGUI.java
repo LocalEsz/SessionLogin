@@ -65,34 +65,38 @@ public class ChangerGUI extends GuiScreen {
             String newName = nameField.getText();
             if (Objects.equals(ssidlogin.originalSession.getToken(), mc.getSession().getToken())) {
                 status = "§4Prevented you from changing the name of your main account!";
-            } else {
-                new Thread(() -> {
-                    try {
-                        int statusCode = APIUtils.changeName(newName, mc.getSession().getToken());
-                        if (statusCode == 200) {
-                            status = "§2Successfully changed name!";
-                            SessionChanger.setSession(new Session(newName, mc.getSession().getPlayerID(), mc.getSession().getToken(), "mojang"));
-                        } else if (statusCode == 429) {
-                            status = "§4Error: Too many requests!";
-                        } else if (statusCode == 400) {
-                            status = "§4Error: Invalid name!";
-                        } else if (statusCode == 401) {
-                            status = "§4Error: Invalid token!";
-                        } else if (statusCode == 403) {
-                            status = "§4Error: Name is unavailable/Player already changed name in the last 35 days";
-                        } else {
-                            status = "§4An unknown error occurred!";
-                        }
-                    }
-                    catch (Exception e) {
-                        status = "§4An unknown error occurred!";
-                        e.printStackTrace();
-                    }
-                }).start();
+                return;
             }
+             new Thread(() -> {
+                try {
+                    int statusCode = APIUtils.changeName(newName, mc.getSession().getToken());
+                    if (statusCode == 200) {
+                        status = "§2Successfully changed name!";
+                        SessionChanger.setSession(new Session(newName, mc.getSession().getPlayerID(), mc.getSession().getToken(), "mojang"));
+                    } else if (statusCode == 429) {
+                        status = "§4Error: Too many requests!";
+                    } else if (statusCode == 400) {
+                         status = "§4Error: Invalid name!";
+                    } else if (statusCode == 401) {
+                        status = "§4Error: Invalid token!";
+                    } else if (statusCode == 403) {
+                        status = "§4Error: Name is unavailable/Player already changed name in the last 35 days";
+                    } else {
+                        status = "§4An unknown error occurred!";
+                    }
+                }
+                catch (Exception e) {
+                    status = "§4An unknown error occurred!";
+                    e.printStackTrace();
+                }
+            }).start();
         }
         if (button.id == 3200){
             String newSkin = skinField.getText();
+            if (Objects.equals(ssidlogin.originalSession.getToken(), mc.getSession().getToken())) {
+                status = "§4Prevented you from changing the skin of your main account!";
+                return;
+            }
             new Thread(() -> {
                 try {
                     int statusCode = APIUtils.changeSkin(newSkin, mc.getSession().getToken());
