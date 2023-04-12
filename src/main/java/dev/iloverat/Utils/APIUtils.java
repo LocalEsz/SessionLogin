@@ -62,7 +62,7 @@ public class APIUtils {
             String[] profileInfo = getProfileInfo(token);
             String IGN = profileInfo[0];
             String UUID = profileInfo[1];
-            return IGN.equals(Minecraft.getMinecraft().getSession().getUsername()) && UUID.equals(Minecraft.getMinecraft().getSession().getPlayerID());
+            return IGN != null && UUID != null;
         } catch (Exception e) {
             return false;
         }
