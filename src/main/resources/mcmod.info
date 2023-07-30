@@ -1,0 +1,16 @@
+[
+{
+  "modid": "examplemods",
+  "name": "SessionLogins",
+  "description": "a session login mod",
+  "version": "2.0",
+  "mcversion": "1.8.9",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["iloverat"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
